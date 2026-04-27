@@ -114,6 +114,25 @@
             background: #fff8ef;
         }
 
+        .row-link {
+            cursor: pointer;
+        }
+
+        .row-link:focus-within {
+            outline: 2px solid #c76d4f;
+            outline-offset: -2px;
+        }
+
+        .open-link {
+            color: #8f3a1f;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .open-link:hover {
+            text-decoration: underline;
+        }
+
         .badge {
             display: inline-block;
             border-radius: 999px;
@@ -193,11 +212,12 @@
                         <th>Facteur Rh</th>
                         <th>Niveau d'accreditation</th>
                         <th>Date d'ajout</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach ($registres as $registre)
-                        <tr>
+                        <tr class="row-link" onclick="window.location='{{ route('registre.show', $registre) }}'">
                             <td>{{ $registre->id }}</td>
                             <td>{{ $registre->biome?->name ?? 'N/A' }}</td>
                             <td>{{ $registre->biome?->description ?? 'Aucune description' }}</td>
@@ -209,6 +229,11 @@
                             </td>
                             <td class="level">{{ $registre->accreditation_level }}/5</td>
                             <td>{{ optional($registre->created_at)->format('d/m/Y H:i') }}</td>
+                            <td>
+                                <a class="open-link" href="{{ route('registre.show', $registre) }}" onclick="event.stopPropagation();">
+                                    Ouvrir
+                                </a>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
