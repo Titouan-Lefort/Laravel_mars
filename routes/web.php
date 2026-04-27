@@ -9,3 +9,7 @@ Route::get('/', function () {
 
 Route::get('/registre', [RegistreController::class, 'index'])->name('registre.index');
 Route::get('/registre/{registre}', [RegistreController::class, 'show'])->name('registre.show');
+
+Route::get('/biomes', function () {
+    return 'Page des biomes';
+})->name('biomes.index');

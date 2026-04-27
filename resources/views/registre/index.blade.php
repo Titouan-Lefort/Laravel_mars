@@ -6,13 +6,14 @@
     <title>Registre Mars</title>
     <style>
         :root {
-            --bg: #f6f4ef;
-            --panel: #ffffff;
-            --text: #1f1d1a;
-            --muted: #6e675f;
-            --line: #ded8cf;
-            --accent: #b24a2a;
-            --accent-2: #2e7d6b;
+            --bg: #0f1218;
+            --panel: #171c24;
+            --panel-soft: #1f2631;
+            --line: #2b3442;
+            --text: #f1f3f6;
+            --muted: #9aa6ba;
+            --accent: #ff5f6d;
+            --accent-2: #4ad3a3;
         }
 
         * { box-sizing: border-box; }
@@ -22,8 +23,8 @@
             font-family: "Segoe UI", "Trebuchet MS", sans-serif;
             color: var(--text);
             background:
-                radial-gradient(circle at 10% 10%, #fff7dd 0%, rgba(255, 247, 221, 0) 35%),
-                radial-gradient(circle at 90% 0%, #ffd9cc 0%, rgba(255, 217, 204, 0) 30%),
+                radial-gradient(circle at 15% 10%, rgba(74, 211, 163, 0.16), transparent 30%),
+                radial-gradient(circle at 90% 0, rgba(255, 95, 109, 0.14), transparent 35%),
                 var(--bg);
         }
 
@@ -93,7 +94,7 @@
         }
 
         thead {
-            background: #f0ebe2;
+            background: var(--panel-soft);
         }
 
         th, td {
@@ -107,11 +108,11 @@
             font-size: 0.78rem;
             text-transform: uppercase;
             letter-spacing: 0.06em;
-            color: #5d554d;
+            color: var(--muted);
         }
 
         tbody tr:hover {
-            background: #fff8ef;
+            background: var(--panel-soft);
         }
 
         .row-link {
@@ -119,12 +120,12 @@
         }
 
         .row-link:focus-within {
-            outline: 2px solid #c76d4f;
+            outline: 2px solid var(--accent);
             outline-offset: -2px;
         }
 
         .open-link {
-            color: #8f3a1f;
+            color: var(--accent);
             font-weight: 700;
             text-decoration: none;
         }
@@ -143,20 +144,20 @@
         }
 
         .rh-plus {
-            background: #ffe7dc;
-            color: #a34224;
-            border-color: #f0c4b4;
+            background: rgba(255, 95, 109, 0.1);
+            color: #ff5f6d;
+            border-color: rgba(255, 95, 109, 0.3);
         }
 
         .rh-minus {
-            background: #dff5ef;
-            color: #1a6c58;
-            border-color: #b6dfd2;
+            background: rgba(74, 211, 163, 0.1);
+            color: #4ad3a3;
+            border-color: rgba(74, 211, 163, 0.3);
         }
 
         .level {
             font-weight: 700;
-            color: #3f3a34;
+            color: var(--text);
         }
 
         .empty {
@@ -170,6 +171,8 @@
     </style>
 </head>
 <body>
+    @include('layouts.navigation')
+
 <div class="container">
     <h1 class="title">Registre des Personnes</h1>
     <p class="subtitle">Vue globale du registre avec les informations de biome, facteur Rh et niveau d'accreditation.</p>
@@ -177,23 +180,23 @@
     <section class="stats">
         <article class="card">
             <h3>Total personnes</h3>
-            <p>{{ $stats['total_registres'] }}</p>
+            <p class="alt2">{{ $stats['total_registres'] }}</p>
         </article>
         <article class="card">
             <h3>Biomes references</h3>
-            <p class="alt2">{{ $stats['total_biomes'] }}</p>
+            <p class="alt">{{ $stats['total_biomes'] }}</p>
         </article>
         <article class="card">
             <h3>Rh+</h3>
-            <p class="alt">{{ $stats['rh_plus'] }}</p>
+            <p class="alt" style="color: var(--accent);">{{ $stats['rh_plus'] }}</p>
         </article>
         <article class="card">
             <h3>Rh-</h3>
-            <p class="alt2">{{ $stats['rh_minus'] }}</p>
+            <p class="alt2" style="color: var(--accent-2);">{{ $stats['rh_minus'] }}</p>
         </article>
         <article class="card">
             <h3>Niveau moyen</h3>
-            <p>{{ $stats['avg_accreditation'] }}</p>
+            <p class="alt2">{{ $stats['avg_accreditation'] }}</p>
         </article>
     </section>
 
