@@ -190,7 +190,7 @@
                         <th>Biome</th>
                         <th>Description biome</th>
                         <th>Surface</th>
-                        <th>Groupe sanguin</th>
+                        <th>Facteur Rh</th>
                         <th>Niveau d'accreditation</th>
                         <th>Date d'ajout</th>
                     </tr>
