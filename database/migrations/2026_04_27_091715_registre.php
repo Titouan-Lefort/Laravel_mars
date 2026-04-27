@@ -11,7 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('registre', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('biome_id')->constrained('biomes')->cascadeOnDelete();
+            $table->enum('rh_factor', ['Rh+', 'Rh-']);
+            $table->enum('accreditation_level', ['1', '2', '3', '4', '5']);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -19,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('registre');
     }
 };
