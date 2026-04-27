@@ -11,7 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('biomes', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->string('surface_type'); // rocky, sandy, icy, volcanic, ...
+            $table->decimal('temperature_min', 6, 2); // °C
+            $table->decimal('temperature_max', 6, 2); // °C
+            $table->decimal('humidity', 5, 2)->default(0); // %
+            $table->decimal('radiation_level', 8, 4)->default(0); // mSv/day
+            $table->decimal('atmospheric_pressure', 8, 4)->nullable(); // hPa
+            $table->decimal('altitude', 8, 2)->nullable(); // mètres
+            $table->timestamps();
+        });
     }
 
     /**
@@ -19,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('biomes');
     }
 };
