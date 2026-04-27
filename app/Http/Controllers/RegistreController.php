@@ -27,4 +27,13 @@ class RegistreController extends Controller
             'stats' => $stats,
         ]);
     }
+
+    public function show(Registre $registre): View
+    {
+        $registre->load('biome');
+
+        return view('registre.show', [
+            'registre' => $registre,
+        ]);
+    }
 }
